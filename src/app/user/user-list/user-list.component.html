@@ -7,13 +7,14 @@
     [infiniteScrollUpDistance]="0.5"
     (scrolled)="onScroll()"
   >
+    <h1>List of All Users</h1>
     <div class="cards-container">
-      <!-- <mat-card class="example-card">
-        <mat-card-content>All User Lists</mat-card-content>
-      </mat-card> -->
-
-      <mat-card *ngFor="let user of users" class="example-card">
-        <mat-card-header>
+      <mat-card
+        *ngFor="let user of users"
+        class="example-card"
+        (click)="goToUser(user.id)"
+      >
+        <mat-card-header class="header-container">
           <div mat-card-avatar class="example-header-image">
             <img
               [src]="user.avatar"
@@ -21,20 +22,21 @@
               class="user-avatar"
             />
           </div>
-          <mat-card-title
+          <mat-card-title class="header-name"
             >{{ user.first_name }} {{ user.last_name }}</mat-card-title
           >
-          <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+          <mat-card-subtitle class="header-name">{{
+            user.email
+          }}</mat-card-subtitle>
         </mat-card-header>
+
         <img
-          mat-card-image
           [src]="user.avatar"
           alt="{{ user.first_name }} Avatar"
           class="user-image"
         />
-        <mat-card-actions>
-          <button mat-button (click)="goToUser(user.id)">View Profile</button>
-        </mat-card-actions>
+
+        <button>View Profile</button>
       </mat-card>
     </div>
   </div>
