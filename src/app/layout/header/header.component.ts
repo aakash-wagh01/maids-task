@@ -7,16 +7,12 @@ import { FilterService } from 'src/app/filter.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   searchQuery: string = '';
   constructor(private router: Router, private filterService: FilterService) {}
-  ngOnInit(): void {
-    console.log('searchQuery', this.searchQuery);
-  }
 
   searchQuerys(event: any) {
     let value = event.target.value;
-    // console.log('value', value);
     if (value) {
       this.router.navigate(['/user-list'], {
         queryParams: { searchQuery: event.target.value },
@@ -32,8 +28,7 @@ export class HeaderComponent implements OnInit {
 
   clearSearch() {
     this.searchQuery = '';
-    this.router.navigate(['/user-list'], {
-      queryParams: { searchQuery: null },
-    });
+    this.filterService.updateFilter(this.searchQuery);
+    this.router.navigateByUrl('/user-list');
   }
 }

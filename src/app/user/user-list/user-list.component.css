@@ -20,7 +20,7 @@
 }
 
 .search-results > h1 {
-  color: #3DA3F7;
+  color: #3da3f7;
   text-align: center;
   margin-top: 50px;
 }
@@ -36,7 +36,7 @@
 .example-card > button {
   padding: 10px 20px;
   border: none;
-  background-color: #3DA3F7;
+  background-color: #3da3f7;
   font-size: 15px;
   color: white;
   cursor: pointer;
@@ -75,7 +75,7 @@
 
 .user-image {
   width: 100%; /* Set image width to 100% */
-  height:300px;
+  height: 300px;
   object-fit: fill;
   border-radius: 5px;
 }
@@ -87,4 +87,25 @@
 
 .fill-remaining-space {
   flex: 1 1 auto;
+}
+.empty-data {
+  width: 100%;
+  height: 50%;
+  align-items: center;
+  text-align: center;
+  color: gray;
+  font-weight: 900;
+  font-size: x-large;
+}
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Adjust the z-index as needed */
+}
+
+.loader mat-spinner {
+  width: 30px; /* Adjust the width of the spinner */
+  height: 30px; /* Adjust the height of the spinner */
 }

@@ -1,4 +1,7 @@
 <div class="container">
+  <div *ngIf="loading" class="loader">
+    <mat-spinner></mat-spinner>
+  </div>
   <div
     class="search-results"
     infinite-scroll
@@ -7,7 +10,7 @@
     [infiniteScrollUpDistance]="0.5"
     (scrolled)="onScroll()"
   >
-    <h1>List of All Users</h1>
+    <h1 style="text-align: center; width: 100vw">List of All Users</h1>
     <div class="cards-container">
       <mat-card
         *ngFor="let user of users"
@@ -41,3 +44,5 @@
     </div>
   </div>
 </div>
+
+<div *ngIf="users.length === 0" class="empty-data">No User Data Found</div>

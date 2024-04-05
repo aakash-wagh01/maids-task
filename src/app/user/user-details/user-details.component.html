@@ -2,16 +2,6 @@
   <button mat-icon-button [routerLink]="['/user-list']" class="back-button">
     <mat-icon>arrow_back</mat-icon>
   </button>
-  <!-- <mat-card class="card">
-    <mat-card-header>
-      <div mat-card-avatar class="avatar"></div>
-      <mat-card-title
-        >{{ users?.first_name }} {{ users?.last_name }}</mat-card-title
-      >
-      <mat-card-subtitle>{{ users?.email }}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image [src]="users?.avatar" alt="User Image" />
-  </mat-card> -->
   <mat-card class="example-card">
     <mat-card-header class="header-container">
       <div mat-card-avatar class="example-header-image">
@@ -24,7 +14,9 @@
       <mat-card-title class="header-name"
         >{{ users?.first_name }} {{ users?.last_name }}</mat-card-title
       >
-      <mat-card-subtitle class="header-name">{{ users?.email }}</mat-card-subtitle>
+      <mat-card-subtitle class="header-name">{{
+        users?.email
+      }}</mat-card-subtitle>
     </mat-card-header>
 
     <img

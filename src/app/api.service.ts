@@ -9,7 +9,7 @@ export class ApiService {
   private readonly baseUrl = 'https://reqres.in/api/users';
   constructor(private http: HttpClient) {}
 
-  getUsers(pageNo?: number, id?: number): Observable<any> {
+  getUsers(pageNo?: number, id?: string): Observable<any> {
     let url = this.baseUrl;
     if (pageNo) {
       url += `?page=${pageNo}`;

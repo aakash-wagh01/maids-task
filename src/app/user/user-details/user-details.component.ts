@@ -22,7 +22,6 @@ export class UserDetailsComponent implements OnInit {
       next: (data) => {
         this.users = data;
         this.users = this.users.data;
-        console.log('usersData', this.users);
       },
       error: (err) => {
         console.error('Error fetching users:', err);
