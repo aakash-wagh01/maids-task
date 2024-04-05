@@ -35,3 +35,12 @@
   width: 100%; /* Set image width to 100% */
   height: auto;
 }
+
+.search-field {
+  width: 300px; /* Adjust the width as needed */
+  margin-right: 16px; /* Adjust margin as needed */
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}

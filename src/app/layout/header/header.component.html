@@ -1,0 +1,35 @@
+<mat-toolbar color="primary">
+  <button mat-button routerLink="/home">Home</button>
+  <button mat-button routerLink="/about">About</button>
+  <span class="fill-remaining-space"></span>
+  <mat-form-field appearance="fill" class="search-field">
+    <mat-label>Search Users</mat-label>
+    <input
+      matInput
+      type="number"
+      placeholder="Search by ID"
+      [(ngModel)]="searchQuery"
+      (keyup)="searchQuerys($event)"
+      (input)="searchFilter()"
+    />
+    <button
+      mat-button
+      *ngIf="searchQuery"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="clearSearch()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <button
+      mat-button
+      color="primary"
+      matSuffix
+      mat-icon-button
+      aria-label="Search"
+    >
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+</mat-toolbar>

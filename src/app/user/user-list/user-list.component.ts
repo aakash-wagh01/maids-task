@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+import { FilterService } from 'src/app/filter.service';
 
 @Component({
   selector: 'app-user-list',
@@ -10,7 +11,25 @@ import { ApiService } from 'src/app/api.service';
 export class UserListComponent implements OnInit {
   users: any[] = [];
   page: number = 1;
-  constructor(private apiService: ApiService, private router: Router) {}
+  searchQuery: string = '';
+  filteredUsers: any[] = [];
+  query: string = '';
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    private activateRoute: ActivatedRoute,
+    private filterService: FilterService
+  ) {
+    this.filterService.filter.subscribe((searchQuery: string) => {
+      this.query = searchQuery;
+      console.log('searchQuery', this.query);
+      this.filteredUsers = this.users.filter((user) => user.id === searchQuery);
+      console.log('SearchArray ', this.filteredUsers);
+      this.getUserList();
+
+      // this.filterUsers(searchQuery);
+    });
+  }
 
   ngOnInit(): void {
     this.getUserList();
@@ -20,9 +39,17 @@ export class UserListComponent implements OnInit {
     this.apiService.getUsers(pageSize).subscribe({
       next: (data) => {
         if (this.page === 1) {
-          this.users = data?.data;
+          if (this.query && this.filteredUsers.length > 0) {
+            this.users = this.filteredUsers;
+          } else {
+            this.users = data?.data;
+          }
         } else {
-          this.users = [...this.users, ...data?.data];
+          if (this.query && this.filteredUsers.length > 0) {
+            this.users = this.filteredUsers;
+          } else {
+            this.users = [...this.users, ...data?.data];
+          }
         }
       },
       error: (err) => {
@@ -30,6 +57,18 @@ export class UserListComponent implements OnInit {
       },
     });
   }
+
+  // filterUsers(searchQuery: string) {
+  //   if (!searchQuery) {
+  //     this.filteredUsers = [...this.users]; // If no search query, show all users
+  //     console.log('filterdUsers', this.filteredUsers);
+  //   } else {
+  //     this.filteredUsers = this.users.filter((user) =>
+  //       user.id.toString().includes(searchQuery)
+  //     );
+  //     console.log('filterdUsers', this.filteredUsers);
+  //   }
+  // }
 
   goToUser(userId: number) {
     this.router.navigate([`/user-details/${userId}`]);
