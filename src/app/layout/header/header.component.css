@@ -18,3 +18,17 @@
   margin: auto !important;
   display: none !important;
 }
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-container > input {
+  outline: none;
+  border: none;
+  padding: 8px;
+  width: 200px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
