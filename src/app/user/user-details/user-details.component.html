@@ -1,1 +1,15 @@
-<p>user-details works!</p>
+<div class="container">
+  <button mat-icon-button [routerLink]="['/user-list']" class="back-button">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <mat-card class="card">
+    <mat-card-header>
+      <div mat-card-avatar class="avatar"></div>
+      <mat-card-title
+        >{{ users?.first_name }} {{ users?.last_name }}</mat-card-title
+      >
+      <mat-card-subtitle>{{ users?.email }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="users?.avatar" alt="User Image" />
+  </mat-card>
+</div>
